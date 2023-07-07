@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: black;
+}
+
+html {
+  background-color: #ECE9E6;
+}
+
+a {
+  background: #ECE9E6;
+background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+}
