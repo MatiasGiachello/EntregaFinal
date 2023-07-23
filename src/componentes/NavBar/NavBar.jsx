@@ -6,7 +6,8 @@ const NavBar = () => {
   return (
     <header>
       <Link style={{textDecoration:'none'}} to="/">
-        <h1 style={{marginLeft:'60px'}}>El Yerbatero</h1>
+        <img src="C:\Users\matia\Downloads\Logo_Marca_Circulo_Mate_ilustrado_marrón-removebg-preview.png"className='logoMates'alt="Logo Mates" />
+        {/* <h1 style={{marginLeft:'60px'}}>El Yerbatero</h1> */}
       </Link>
 
       <nav>

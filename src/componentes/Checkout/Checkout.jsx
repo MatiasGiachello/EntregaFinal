@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { CarritoContext } from "../../context/CarritoContext";
 import { db } from "../../services/config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc,getDoc } from "firebase/firestore";
 
 const Checkout = () => {
     const [nombre, setNombre] = useState("");
@@ -16,8 +16,14 @@ const Checkout = () => {
 
     const manejadorFormulario = (event) => {
         event.preventDefault();
+
         if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
             setError("Vuelve a Escribir lo datos");
+            return;
+        }
+
+        if (email !== emailConfirmacion) {
+            setError("Email no coincide");
             return;
         }
 
@@ -34,14 +40,33 @@ const Checkout = () => {
             telefono,
             email
         };
-        addDoc(collection(db, "ordenes"), orden)
-            .then(docRef => {
-                setOrdenId(docRef.id);
-                vaciarCarrito();
+
+
+        Promise.all(
+            orden.items.map(async (productoOrden) => {
+                const productoRef = doc(db, "inventario", productoOrden.id);
+                const productoDoc = await getDoc(productoRef);
+                const stockActual = productoDoc.data().stock;
+
+                await updateDoc(productoRef, {
+                    stock: stockActual - productoOrden.cantidad,
+                })
             })
-            .catch(error => {
-                console.log("Error al crear tu Orden seleccionada");
-                setError("Se ha producido un Error intente de nuevo")
+        )
+            .then(() => {
+                addDoc(collection(db, "ordenes"), orden)
+                    .then((docRef) => {
+                        setOrdenId(docRef.id);
+                        vaciarCarrito();
+                    })
+                    .catch((error) => {
+                        console.log("Error al crear la orden.", error);
+                        setError("Error al crear la orden, por favor vuelva a intentarlo.");
+                    });
+            })
+            .catch((error) => {
+                console.log("No se puede actualizar el stock", error);
+                setError("No se puede actualizar el stock, intente de nuevo. ");
             })
     }
     return (
@@ -54,6 +79,7 @@ const Checkout = () => {
                             <p> {producto.item.nombre} x  {producto.cantidad} </p>
                             <p> {producto.item.precio} </p>
                             <hr />
+                            <p> Cantidad Total: {cantidadTotal} </p>
                         </div>
                     ))
                 }

@@ -11,7 +11,7 @@ const CartItem = (item, cantidad) => {
         <h3>{item.nombre}</h3>
         <p> Cantidad: {cantidad} </p>
         <p>Precio: {item.precio}</p>
-        <button onClick={() => eliminarProducto(item.id)}> Eliminar Producto </button>
+        <button className="miBtn" onClick={() => eliminarProducto(item.id)}> Eliminar Producto </button>
         <hr />
     </div>
   )

@@ -1,4 +1,3 @@
-//import ItemCount from "./componentes/ItemCount/ItemCount"
 import NavBar from "./componentes/NavBar/NavBar"
 import ItemListContainer from "./componentes/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from "./componentes/ItemDetailContainer/ItemDetailContainer"
@@ -9,6 +8,8 @@ import Checkout from "./componentes/Checkout/Checkout"
 
 
 const App = () => {
+
+
   return (
     <>
       <BrowserRouter>
@@ -21,8 +22,8 @@ const App = () => {
           <Route path="/Checkout" element={<Checkout/>}> </Route>
           <Route path="*" element={<h2>Sitio en construcción, vuelva más tarde</h2>}  />
         </Routes>
-        <CarritoProvider/>
       </BrowserRouter>
+      <CarritoProvider />
     </>
 
   )
