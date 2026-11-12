@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactate con Mates del Sur.">
+    <title>Mates del Sur | Contacto</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="encabezado">
+        <div class="contenedor encabezado__contenido">
+            <a href="index.html" class="logo">
+                <img src="img/logoMates.png" alt="Logo de Mates del Sur" class="logo__imagen">
+                <span class="logo__texto">Mates del Sur</span>
+            </a>
+            <nav class="navegacion" aria-label="Navegación principal">
+                <ul class="navegacion__lista">
+                    <li><a href="index.html" class="navegacion__enlace">Inicio</a></li>
+                    <li><a href="productos.html" class="navegacion__enlace">Productos</a></li>
+                    <li><a href="contacto.html" class="navegacion__enlace navegacion__enlace--activo">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="seccion contenedor contacto">
+        <div class="contacto__datos">
+            <h1 class="seccion__titulo">Contacto</h1>
+            <p class="seccion__bajada">¿Tenés alguna consulta o querés hacer un pedido especial? Escribinos.</p>
+            <ul class="lista-datos">
+                <li><strong>Horario:</strong> lunes a viernes de 9 a 18 h</li>
+                <li><strong>Ubicación:</strong> Buenos Aires, Argentina</li>
+                <li><strong>Envíos:</strong> a todo el país</li>
+            </ul>
+        </div>
+
+        <form class="formulario" action="#" method="post">
+            <div class="formulario__campo">
+                <label for="nombre" class="formulario__etiqueta">Nombre</label>
+                <input type="text" id="nombre" name="nombre" class="formulario__input" required>
+            </div>
+            <div class="formulario__campo">
+                <label for="email" class="formulario__etiqueta">Email</label>
+                <input type="email" id="email" name="email" class="formulario__input" required>
+            </div>
+            <div class="formulario__campo">
+                <label for="motivo" class="formulario__etiqueta">Motivo</label>
+                <select id="motivo" name="motivo" class="formulario__input">
+                    <option value="consulta">Consulta</option>
+                    <option value="pedido">Pedido especial</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="formulario__campo">
+                <label for="mensaje" class="formulario__etiqueta">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" class="formulario__input" required></textarea>
+            </div>
+            <button type="submit" class="boton">Enviar</button>
+        </form>
+    </main>
+
+    <footer class="pie">
+        <div class="contenedor">
+            <p>&copy; 2026 Mates del Sur — Trabajo Práctico Final, Desarrollo de Software 3.</p>
+        </div>
+    </footer>
+</body>
+</html>
